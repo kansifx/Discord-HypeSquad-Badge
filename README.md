@@ -1,32 +1,31 @@
-# ⚡ Discord HypeSquad House Changer
+# ⚡ Discord HypeSquad Changer
 
-Script sederhana berbasis **JavaScript** untuk mengubah House HypeSquad Discord (Bravery, Brilliance, atau Balance) tanpa harus melalui kuis manual. Script ini bekerja dengan melakukan *hooking* pada modul internal Webpack Discord.
+This repository contains a specialized **JavaScript** snippet designed to change or join a Discord HypeSquad House (Bravery, Brilliance, or Balance) instantly. Instead of taking the manual quiz, this script communicates directly with Discord's internal API by hooking into Webpack modules.
 
-## ✨ Fitur
-- **Instant Change**: Ganti house hanya dalam hitungan detik.
-- **Automated Hooking**: Mencari modul `HTTPUtils` secara otomatis.
-- **Lightweight**: Tanpa dependensi eksternal, cukup jalankan di console.
+## ✨ Features
+- **Dynamic Module Hooking**: Automatically locates the `HTTPUtils` module within the Discord client.
+- **Instant Migration**: Switch between houses without waiting for quiz cooldowns.
+- **Console-Ready**: Designed to be executed directly in the Developer Tools console.
 
-## 🚀 Cara Penggunaan
+## 🚀 How to Use
 
-1. Buka Discord di Browser (Chrome/Edge) atau aplikasi Desktop.
-2. Tekan `Ctrl + Shift + I` untuk membuka **Developer Tools**.
-3. Pilih tab **Console**.
-4. *Copy & Paste* seluruh kode dari file `change_hypesquad.js` di repository ini.
-5. Tekan `Enter`.
-6. Refresh Discord (`Ctrl + R`) untuk melihat perubahannya.
+1. Open Discord in your browser or the Desktop app.
+2. Press `Ctrl + Shift + I` to open **Developer Tools**.
+3. Navigate to the **Console** tab.
+4. Copy the full code from `hypesquad_changer.js` in this repo and paste it into the console.
+5. Press `Enter`.
+6. Refresh Discord (`Ctrl + R`) to see your new badge!
 
 ## 🏠 House ID Reference
-Ubah nilai `houseId` pada script sesuai dengan keinginanmu:
+Update the `houseId` variable in the script to your preferred house:
 - `1` : **House of Bravery**
 - `2` : **House of Brilliance**
 - `3` : **House of Balance**
 
-## 🛠️ Detail Teknis
-Script ini menggunakan teknik pendorongan chunk ke `webpackChunkdiscord_app` untuk mendapatkan akses ke fungsi internal Discord:
-- Mengambil `wreq` (Webpack Require).
-- Iterasi melalui `chunks` untuk menemukan modul `HTTPUtils`.
-- Mengirimkan request `POST` ke endpoint `/hypesquad/online`.
+## 🛠️ Technical Overview
+The script functions by pushing a custom chunk into `webpackChunkdiscord_app` to gain access to the Webpack requirement function. It then performs the following:
+- Scans the Webpack cache for modules containing specific code signatures (e.g., `"HTTPUtils"`).
+- Extracts the API handler to perform an authenticated `POST` request to the `/hypesquad/online` endpoint.
 
-## ⚠️ Peringatan
-Gunakan dengan bijak. Script ini ditujukan untuk tujuan edukasi mengenai cara kerja Webpack di aplikasi berbasis Electron. Penggunaan script pihak ketiga pada konsol Discord secara teknis melanggar TOS Discord, jadi gunakan risiko ditanggung sendiri.
+## ⚠️ Disclaimer
+This project is for **educational purposes only**. Manipulating the Discord client via the console technically violates Discord's Terms of Service. Use this at your own risk. The author is not responsible for any account actions taken by Discord.
